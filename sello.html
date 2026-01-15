@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sello Blanco y Negro - Negocios Jurídicos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fff; /* Fondo blanco para facilitar el recorte */
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Contenedor Principal del Sello */
+        .stamp-container {
+            position: relative;
+            width: 350px;
+            height: 350px;
+            /* Doble borde circular en blanco y negro */
+            border: 6px solid #000;
+            border-radius: 50%;
+            box-shadow: inset 0 0 0 4px #fff, inset 0 0 0 7px #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            background-color: #fff; /* Fondo interno blanco */
+        }
+
+        /* Logo Central (en blanco y negro) */
+        .center-logo {
+            width: 120px;
+            margin-bottom: 10px;
+            /* Filtro para convertir la imagen a escala de grises */
+            filter: grayscale(100%) contrast(120%);
+        }
+
+        /* Texto Central "NEGOCIOS JURÍDICOS" */
+        .center-text {
+            text-align: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: #000;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        /* Contenedor para el texto curvado */
+        .curved-text-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none; /* Para que no interfiera */
+        }
+
+        /* Caracteres individuales de la dirección */
+        .curved-char {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            font-size: 11px;
+            font-weight: 600;
+            color: #000;
+            text-transform: uppercase;
+            /* Mueve el punto de rotación al centro del sello y baja el texto al borde */
+            transform-origin: 0 175px; 
+            /* La rotación se define individualmente abajo */
+        }
+
+        /* --- Rotación de cada letra para formar el arco inferior --- */
+        /* Dirección: "4 calle “A” 1-18 Oficina 8 de la zona 1, Guatemala, Guatemala." */
+        /* Arco de aprox. 220 grados en la parte inferior */
+
+        /* 4 */ .c1 { transform: translate(-50%, -50%) rotate(70deg); }
+        /* */ .c2 { transform: translate(-50%, -50%) rotate(73deg); }
+        /* c */ .c3 { transform: translate(-50%, -50%) rotate(76deg); }
+        /* a */ .c4 { transform: translate(-50%, -50%) rotate(79deg); }
+        /* l */ .c5 { transform: translate(-50%, -50%) rotate(81.5deg); }
+        /* l */ .c6 { transform: translate(-50%, -50%) rotate(84deg); }
+        /* e */ .c7 { transform: translate(-50%, -50%) rotate(87deg); }
+        /* */ .c8 { transform: translate(-50%, -50%) rotate(90deg); }
+        /* “ */ .c9 { transform: translate(-50%, -50%) rotate(93deg); }
+        /* A */ .c10 { transform: translate(-50%, -50%) rotate(96deg); }
+        /* ” */ .c11 { transform: translate(-50%, -50%) rotate(99deg); }
+        /* */ .c12 { transform: translate(-50%, -50%) rotate(102deg); }
+        /* 1 */ .c13 { transform: translate(-50%, -50%) rotate(105deg); }
+        /* - */ .c14 { transform: translate(-50%, -50%) rotate(108deg); }
+        /* 1 */ .c15 { transform: translate(-50%, -50%) rotate(111deg); }
+        /* 8 */ .c16 { transform: translate(-50%, -50%) rotate(114deg); }
+        /* */ .c17 { transform: translate(-50%, -50%) rotate(117deg); }
+        /* O */ .c18 { transform: translate(-50%, -50%) rotate(120deg); }
+        /* f */ .c19 { transform: translate(-50%, -50%) rotate(123deg); }
+        /* i */ .c20 { transform: translate(-50%, -50%) rotate(125deg); }
+        /* c */ .c21 { transform: translate(-50%, -50%) rotate(127.5deg); }
+        /* i */ .c22 { transform: translate(-50%, -50%) rotate(130deg); }
+        /* n */ .c23 { transform: translate(-50%, -50%) rotate(132.5deg); }
+        /* a */ .c24 { transform: translate(-50%, -50%) rotate(135.5deg); }
+        /* */ .c25 { transform: translate(-50%, -50%) rotate(138.5deg); }
+        /* 8 */ .c26 { transform: translate(-50%, -50%) rotate(141.5deg); }
+        /* */ .c27 { transform: translate(-50%, -50%) rotate(144.5deg); }
+        /* d */ .c28 { transform: translate(-50%, -50%) rotate(147.5deg); }
+        /* e */ .c29 { transform: translate(-50%, -50%) rotate(150.5deg); }
+        /* */ .c30 { transform: translate(-50%, -50%) rotate(153.5deg); }
+        /* l */ .c31 { transform: translate(-50%, -50%) rotate(156deg); }
+        /* a */ .c32 { transform: translate(-50%, -50%) rotate(158.5deg); }
+        /* */ .c33 { transform: translate(-50%, -50%) rotate(161.5deg); }
+        /* z */ .c34 { transform: translate(-50%, -50%) rotate(164.5deg); }
+        /* o */ .c35 { transform: translate(-50%, -50%) rotate(167.5deg); }
+        /* n */ .c36 { transform: translate(-50%, -50%) rotate(170.5deg); }
+        /* a */ .c37 { transform: translate(-50%, -50%) rotate(173.5deg); }
+        /* */ .c38 { transform: translate(-50%, -50%) rotate(176.5deg); }
+        /* 1 */ .c39 { transform: translate(-50%, -50%) rotate(179.5deg); }
+        /* , */ .c40 { transform: translate(-50%, -50%) rotate(182deg); }
+        /* */ .c41 { transform: translate(-50%, -50%) rotate(184.5deg); }
+        /* G */ .c42 { transform: translate(-50%, -50%) rotate(187.5deg); }
+        /* u */ .c43 { transform: translate(-50%, -50%) rotate(190.5deg); }
+        /* a */ .c44 { transform: translate(-50%, -50%) rotate(193.5deg); }
+        /* t */ .c45 { transform: translate(-50%, -50%) rotate(196deg); }
+        /* e */ .c46 { transform: translate(-50%, -50%) rotate(198.5deg); }
+        /* m */ .c47 { transform: translate(-50%, -50%) rotate(202deg); }
+        /* a */ .c48 { transform: translate(-50%, -50%) rotate(205.5deg); }
+        /* l */ .c49 { transform: translate(-50%, -50%) rotate(208deg); }
+        /* a */ .c50 { transform: translate(-50%, -50%) rotate(210.5deg); }
+        /* , */ .c51 { transform: translate(-50%, -50%) rotate(213deg); }
+        /* */ .c52 { transform: translate(-50%, -50%) rotate(215.5deg); }
+        /* G */ .c53 { transform: translate(-50%, -50%) rotate(218.5deg); }
+        /* u */ .c54 { transform: translate(-50%, -50%) rotate(221.5deg); }
+        /* a */ .c55 { transform: translate(-50%, -50%) rotate(224.5deg); }
+        /* t */ .c56 { transform: translate(-50%, -50%) rotate(227deg); }
+        /* e */ .c57 { transform: translate(-50%, -50%) rotate(229.5deg); }
+        /* m */ .c58 { transform: translate(-50%, -50%) rotate(233deg); }
+        /* a */ .c59 { transform: translate(-50%, -50%) rotate(236.5deg); }
+        /* l */ .c60 { transform: translate(-50%, -50%) rotate(239deg); }
+        /* a */ .c61 { transform: translate(-50%, -50%) rotate(241.5deg); }
+        /* . */ .c62 { transform: translate(-50%, -50%) rotate(244deg); }
+
+    </style>
+</head>
+<body>
+
+    <div class="stamp-container">
+        <img src="Logo_Escalas_AltaCalidad.png" alt="Logo" class="center-logo">
+        <div class="center-text">
+            NEGOCIOS<br>JURÍDICOS
+        </div>
+
+        <div class="curved-text-container">
+            <span class="curved-char c1">4</span>
+            <span class="curved-char c2"> </span>
+            <span class="curved-char c3">c</span>
+            <span class="curved-char c4">a</span>
+            <span class="curved-char c5">l</span>
+            <span class="curved-char c6">l</span>
+            <span class="curved-char c7">e</span>
+            <span class="curved-char c8"> </span>
+            <span class="curved-char c9">“</span>
+            <span class="curved-char c10">A</span>
+            <span class="curved-char c11">”</span>
+            <span class="curved-char c12"> </span>
+            <span class="curved-char c13">1</span>
+            <span class="curved-char c14">-</span>
+            <span class="curved-char c15">1</span>
+            <span class="curved-char c16">8</span>
+            <span class="curved-char c17"> </span>
+            <span class="curved-char c18">O</span>
+            <span class="curved-char c19">f</span>
+            <span class="curved-char c20">i</span>
+            <span class="curved-char c21">c</span>
+            <span class="curved-char c22">i</span>
+            <span class="curved-char c23">n</span>
+            <span class="curved-char c24">a</span>
+            <span class="curved-char c25"> </span>
+            <span class="curved-char c26">8</span>
+            <span class="curved-char c27"> </span>
+            <span class="curved-char c28">d</span>
+            <span class="curved-char c29">e</span>
+            <span class="curved-char c30"> </span>
+            <span class="curved-char c31">l</span>
+            <span class="curved-char c32">a</span>
+            <span class="curved-char c33"> </span>
+            <span class="curved-char c34">z</span>
+            <span class="curved-char c35">o</span>
+            <span class="curved-char c36">n</span>
+            <span class="curved-char c37">a</span>
+            <span class="curved-char c38"> </span>
+            <span class="curved-char c39">1</span>
+            <span class="curved-char c40">,</span>
+            <span class="curved-char c41"> </span>
+            <span class="curved-char c42">G</span>
+            <span class="curved-char c43">u</span>
+            <span class="curved-char c44">a</span>
+            <span class="curved-char c45">t</span>
+            <span class="curved-char c46">e</span>
+            <span class="curved-char c47">m</span>
+            <span class="curved-char c48">a</span>
+            <span class="curved-char c49">l</span>
+            <span class="curved-char c50">a</span>
+            <span class="curved-char c51">,</span>
+            <span class="curved-char c52"> </span>
+            <span class="curved-char c53">G</span>
+            <span class="curved-char c54">u</span>
+            <span class="curved-char c55">a</span>
+            <span class="curved-char c56">t</span>
+            <span class="curved-char c57">e</span>
+            <span class="curved-char c58">m</span>
+            <span class="curved-char c59">a</span>
+            <span class="curved-char c60">l</span>
+            <span class="curved-char c61">a</span>
+            <span class="curved-char c62">.</span>
+        </div>
+    </div>
+
+</body>
+</html>
