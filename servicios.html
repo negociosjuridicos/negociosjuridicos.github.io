@@ -17,16 +17,18 @@
             color: #333;
             padding: 20px; 
             
-            /* CAMBIO 1: Convertir el cuerpo en una columna Flex */
+            /* FLEXBOX PARA ESTRUCTURA VERTICAL */
             display: flex;
             flex-direction: column;
         }
         
         /* Contenedor Principal */
         .container { 
-            width: 100%; /* Asegura que ocupe el ancho disponible */
+            width: 100%; 
             max-width: 600px; 
             margin: 0 auto; 
+            /* Esto permite que el contenido crezca */
+            flex: 1; 
         }
 
         /* Encabezado de Página */
@@ -40,7 +42,6 @@
         }
         .page-title { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; }
         
-        /* Flecha de regreso */
         .back-btn { color: #14224A; font-size: 1.5rem; text-decoration: none; transition: transform 0.2s; }
         .back-btn:hover { transform: translateX(-5px); }
 
@@ -55,7 +56,6 @@
         }
         .service-card:hover { transform: translateY(-3px); }
 
-        /* Títulos de Categoría */
         .category-title {
             color: #fff; 
             font-size: 1.1rem; font-weight: 700;
@@ -64,7 +64,6 @@
         }
         .category-title i { margin-right: 10px; color: #ccc; font-size: 1.3rem; }
 
-        /* Listas de Servicios */
         .service-list { list-style: none; }
         .service-list li {
             margin-bottom: 12px; font-size: 0.95rem; 
@@ -76,19 +75,20 @@
             margin-right: 10px; margin-top: 3px; font-size: 0.9rem;
         }
 
-        /* CAMBIO 2: Footer corregido con Flexbox */
+        /* --- AQUÍ ESTABA EL ERROR, CORREGIDO: --- */
         .creator-footer {
-            /* Quitamos position: fixed */
+            /* Eliminado: position: fixed; bottom: 15px; */
             width: 100%;
             text-align: center; 
             font-size: 0.75rem; 
             color: #999;
             
-            /* Esto empuja el footer al final de la página */
+            /* Esto empuja el footer siempre al final */
             margin-top: auto; 
-            padding-top: 40px; /* Espacio extra arriba para separarlo del botón */
+            padding-top: 40px; 
+            padding-bottom: 20px;
         }
-        .creator-footer a { color: #14224A; font-weight: 700; text-decoration: none; }
+        .creator-footer a { color: #14224A; font-weight: 700; text-decoration: none; pointer-events: auto; }
         .creator-footer a:hover { text-decoration: underline; color: #000; }
 
         /* Botón de acción al final */
