@@ -12,31 +12,38 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
         
         body {
-            /* CAMBIO: Fondo BLANCO (gris muy suave para elegancia) */
             background-color: #f4f4f4;
-            display: flex; justify-content: center; align-items: center;
-            min-height: 100vh; color: #333; padding: 20px; padding-bottom: 60px;
+            display: flex;
+            /* CAMBIO 1: Organizar elementos en columna (uno debajo del otro) */
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center;
+            min-height: 100vh; 
+            color: #333; 
+            padding: 20px; 
+            /* Quitamos el padding-bottom extra porque ya no es fijo */
         }
 
-        /* CAMBIO: Tarjeta AZUL MARINO */
+        /* Tarjeta AZUL MARINO */
         .card {
-            background: #14224A; /* Color de la tarjeta */
-            color: #fff; /* Texto base blanco */
+            background: #14224A;
+            color: #fff;
             width: 100%; max-width: 400px;
             border-radius: 8px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3); /* Sombra suave */
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
             overflow: hidden;
             position: relative;
+            /* CAMBIO 2: Márgenes automáticos para centrar verticalmente si sobra espacio */
+            margin-top: auto;
+            margin-bottom: auto;
         }
 
         /* --- ENCABEZADO --- */
-        /* Línea divisoria sutil para el encabezado dentro de la tarjeta azul */
         .header-section { padding: 40px 20px 20px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
         
         .logo-container {
             width: 120px; height: 120px;
             margin: 0 auto 20px;
-            /* Fondo blanco para el logo si la imagen es transparente, o transparente si la imagen tiene fondo */
             background-color: #fff; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             border-radius: 4px;
@@ -46,15 +53,12 @@
         
         .logo-img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-        /* CAMBIO: Textos en BLANCO */
         .brand-name { color: #fff; font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 25px; line-height: 1.2; }
         
-        /* CAMBIO: Divisor blanco */
         .divider { width: 50px; height: 3px; background-color: #fff; margin: 15px auto; }
         
         .person-name { color: #fff; font-size: 1.4rem; font-weight: 700; text-transform: uppercase; margin-bottom: 5px; }
         
-        /* Título en gris claro */
         .job-title { color: #ccc; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 3px; font-weight: 500; }
 
         /* --- BOTONES --- */
@@ -68,18 +72,13 @@
         }
         .btn i { margin-right: 12px; font-size: 1.2rem; }
 
-        /* Botón Servicios: BLANCO para resaltar sobre el azul */
         .btn-services {
             background-color: #fff; 
             color: #14224A; 
             border: 2px solid #fff;
         }
-        .btn-services:hover { 
-            background-color: transparent; 
-            color: #fff; 
-        }
+        .btn-services:hover { background-color: transparent; color: #fff; }
 
-        /* Botón Llamar: Transparente con borde blanco (Ghost Button) */
         .btn-primary { 
             background-color: transparent; 
             color: #fff; 
@@ -91,23 +90,25 @@
             border-color: #fff;
         }
 
-        /* WhatsApp: Se mantiene verde pero con borde sutil */
         .btn-whatsapp { background-color: #25D366; color: #fff; border: 1px solid #25D366; }
         .btn-whatsapp:hover { background-color: #1ebc57; box-shadow: 0 0 15px rgba(37, 211, 102, 0.4); }
 
-        /* Correo: Gris para mantener la línea gráfica */
         .btn-secondary { background-color: #999DA0; color: #fff; border: 1px solid #999DA0; }
         .btn-secondary:hover { background-color: #b0b3b5; color: #fff; }
 
-        /* --- FOOTER (Para fondo claro) --- */
+        /* --- FOOTER CORREGIDO --- */
         .creator-footer {
-            position: fixed; bottom: 15px; left: 0; width: 100%;
-            text-align: center; font-size: 0.75rem;
-            /* Texto oscuro porque el fondo ahora es blanco */
+            /* CAMBIO 3: Quitamos position: fixed */
+            width: 100%;
+            text-align: center; 
+            font-size: 0.75rem;
             color: #999; 
-            z-index: 1000; pointer-events: none;
+            
+            /* CAMBIO 4: Empuja el footer al final de la flex-column */
+            margin-top: auto; 
+            padding-top: 25px; /* Espacio para que no se pegue a la tarjeta */
         }
-        .creator-footer a { pointer-events: auto; color: #14224A; font-weight: 700; text-decoration: none; }
+        .creator-footer a { color: #14224A; font-weight: 700; text-decoration: none; }
         .creator-footer a:hover { text-decoration: underline; color: #000; }
 
     </style>

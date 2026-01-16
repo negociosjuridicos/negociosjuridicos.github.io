@@ -12,16 +12,24 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
         
         body {
-            /* Fondo de la página gris claro (igual que el index) */
             background-color: #f4f4f4; 
-            min-height: 100vh; color: #333;
-            padding: 20px; padding-bottom: 60px;
+            min-height: 100vh; 
+            color: #333;
+            padding: 20px; 
+            
+            /* CAMBIO 1: Convertir el cuerpo en una columna Flex */
+            display: flex;
+            flex-direction: column;
         }
         
         /* Contenedor Principal */
-        .container { max-width: 600px; margin: 0 auto; }
+        .container { 
+            width: 100%; /* Asegura que ocupe el ancho disponible */
+            max-width: 600px; 
+            margin: 0 auto; 
+        }
 
-        /* Encabezado de Página (INVERTIDO: Fondo Blanco, Texto Azul) */
+        /* Encabezado de Página */
         .page-header {
             background: #fff; 
             color: #14224A; 
@@ -32,22 +40,22 @@
         }
         .page-title { font-size: 1.2rem; font-weight: 700; text-transform: uppercase; }
         
-        /* Flecha de regreso (Azul) */
+        /* Flecha de regreso */
         .back-btn { color: #14224A; font-size: 1.5rem; text-decoration: none; transition: transform 0.2s; }
         .back-btn:hover { transform: translateX(-5px); }
 
-        /* Tarjetas de Servicio (INVERTIDO: Fondo Azul, Texto Blanco) */
+        /* Tarjetas de Servicio */
         .service-card {
-            background: #14224A; /* Azul Corporativo */
-            color: #fff; /* Texto Blanco */
+            background: #14224A; 
+            color: #fff; 
             border-radius: 8px; padding: 25px;
             margin-bottom: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            border-left: 5px solid #fff; /* Borde lateral blanco */
+            border-left: 5px solid #fff; 
             transition: transform 0.3s ease;
         }
         .service-card:hover { transform: translateY(-3px); }
 
-        /* Títulos de Categoría (Ahora Blancos) */
+        /* Títulos de Categoría */
         .category-title {
             color: #fff; 
             font-size: 1.1rem; font-weight: 700;
@@ -60,30 +68,36 @@
         .service-list { list-style: none; }
         .service-list li {
             margin-bottom: 12px; font-size: 0.95rem; 
-            color: #ddd; /* Gris muy claro para leerse bien sobre azul */
+            color: #ddd; 
             display: flex; align-items: flex-start;
         }
         .service-list li i {
-            color: #25D366; /* Check verde se mantiene (resalta muy bien) */
+            color: #25D366; 
             margin-right: 10px; margin-top: 3px; font-size: 0.9rem;
         }
 
-        /* Footer */
+        /* CAMBIO 2: Footer corregido con Flexbox */
         .creator-footer {
-            position: fixed; bottom: 15px; left: 0; width: 100%;
-            text-align: center; font-size: 0.75rem; color: #999;
-            z-index: 1000; pointer-events: none;
+            /* Quitamos position: fixed */
+            width: 100%;
+            text-align: center; 
+            font-size: 0.75rem; 
+            color: #999;
+            
+            /* Esto empuja el footer al final de la página */
+            margin-top: auto; 
+            padding-top: 40px; /* Espacio extra arriba para separarlo del botón */
         }
-        .creator-footer a { pointer-events: auto; color: #14224A; font-weight: 700; text-decoration: none; }
+        .creator-footer a { color: #14224A; font-weight: 700; text-decoration: none; }
         .creator-footer a:hover { text-decoration: underline; color: #000; }
 
-        /* Botón de acción al final (INVERTIDO: Blanco con letras azules) */
+        /* Botón de acción al final */
         .cta-box { text-align: center; margin-top: 30px; }
         .btn-consult {
             display: inline-block; 
             background-color: #fff; 
             color: #14224A;
-            border: 2px solid #14224A; /* Borde para definición */
+            border: 2px solid #14224A; 
             padding: 12px 25px; text-decoration: none; border-radius: 50px;
             font-weight: 600; text-transform: uppercase; font-size: 0.9rem;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
